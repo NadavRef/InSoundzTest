@@ -4,9 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Homework1.API;
+using InSoundzTest.API;
+using InSoundzTest.Entities;
 
-namespace Homework1
+namespace InSoundzTest
 {
     public static class Hollywood
     {
@@ -29,7 +30,7 @@ namespace Homework1
             if (videoPaths == null || !videoPaths.Any() ||
                 audioPaths == null || !audioPaths.Any())
             {
-                // logging
+                // Logging and send unicorns to space 
                 return null;
             }
 
@@ -175,7 +176,7 @@ namespace Homework1
         {
             if (!Directory.Exists(ResourcesDirectory))
             {
-                // Logging error
+                // Logging and send unicorns to space 
                 return null;
             }
 

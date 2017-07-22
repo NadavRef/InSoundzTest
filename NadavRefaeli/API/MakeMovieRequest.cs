@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using InSoundzTest.Entities;
 
-namespace Homework1.API
+namespace InSoundzTest.API
 {
     public class MakeMovieRequest
     {

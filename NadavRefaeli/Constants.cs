@@ -1,4 +1,4 @@
-﻿namespace Homework1
+﻿namespace InSoundzTest
 {
     public static class Constants
     {

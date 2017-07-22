@@ -1,6 +1,6 @@
-﻿using Homework1.API;
+﻿using InSoundzTest.API;
 
-namespace Homework1
+namespace InSoundzTest
 {
     public class Program
     {

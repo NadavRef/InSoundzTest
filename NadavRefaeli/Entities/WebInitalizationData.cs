@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Homework1
+namespace InSoundzTest.Entities
 {
     public class WebInitalizationData
     {
@@ -19,7 +19,6 @@ namespace Homework1
 
         private WebInitalizationData()
         {
-            
         }
     }
 }

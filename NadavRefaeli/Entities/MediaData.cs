@@ -1,4 +1,4 @@
-﻿namespace Homework1
+﻿namespace InSoundzTest.Entities
 {
     public class MediaData
     {

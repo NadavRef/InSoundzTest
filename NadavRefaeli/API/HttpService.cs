@@ -2,9 +2,10 @@
 using System.IO;
 using System.Net;
 using System.Threading;
+using InSoundzTest.Entities;
 using Newtonsoft.Json;
 
-namespace Homework1.API
+namespace InSoundzTest.API
 {
     public class HttpService
     {
@@ -37,7 +38,7 @@ namespace Homework1.API
                 }
                 catch (Exception)
                 {
-                    // Send unicorns to space 
+                    // Logging and send unicorns to space 
                 }
             }
         }
@@ -47,7 +48,7 @@ namespace Homework1.API
             var command = context.Request.RawUrl;
             switch (command)
             {
-                case Constants.InitalizeWebCommand: HandleInitalizeWebCommand(context);   break;
+                case Constants.InitalizeWebCommand: HandleInitalizeWebCommand(context); break;
                 case Constants.GenerateMovieCommand: HandleGenerateMovieCommand(context); break;
                 default:
                     if (command.Contains(Constants.GetMovieCommand))
@@ -55,7 +56,7 @@ namespace Homework1.API
                         HandleGetMovieCommand(context);
                         return;
                     }
-                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;  
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     context.Response.StatusDescription = "Command Does Not Exists";
                     break;
             }
@@ -158,7 +159,7 @@ namespace Homework1.API
 
         private void CreateMovieResponse(HttpListenerContext context, string movieName)
         {
-            var url = _serverUrl + Constants.GetMovieCommand +"/" + movieName;
+            var url = string.Concat(_serverUrl, Constants.GetMovieCommand, "/", movieName);
             var json = JsonConvert.SerializeObject(url);
             var bytes = System.Text.Encoding.UTF8.GetBytes(json);
 
