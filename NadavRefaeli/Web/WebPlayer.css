@@ -1,0 +1,19 @@
+﻿.media-selection {
+     text-align:center;
+}
+.vertical-div {
+    display: inline-grid;
+    padding: 10px;
+}
+
+a { color: inherit; }  
+
+select { min-width: 200px;min-height: 24px;}
+
+button { font-size: 24px;}
+
+video {
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 0%);
+}

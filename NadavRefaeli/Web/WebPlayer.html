@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Nadav's Mighty Web Player</title>
+    <link rel="apple-touch-icon" sizes="36x36" href="../Resources/apple-icon-76x76.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="WebPlayer.css">
+</head>
+<body ng-app="WebPlayerApp" ng-controller="mainController">
+<div class="row">
+    <h3 style="padding-left: 50px;">Media To Use:</h3>
+    <table class="w3-table w3-border media-selection">
+        <tr>
+            <td></td>
+            <td>
+                <i class="fa fa-file-video-o" style="font-size: 24px"></i>
+            </td>
+            <td>
+                <select ng-model="SelectedVideo">
+                    <option ng-repeat="video in AvailableVideos" value="{{video}}">{{video}}</option>
+                </select>
+            </td>
+            <td>
+                <input ng-model="SelectedVideoOffset" type="number" placeholder="Offset In Seconds"/>
+            </td>
+            <td>
+                <input ng-model="SelectedVideoStartTime" type="number" placeholder="Start After X Seconds"/>
+            </td>
+            <td>
+                <input ng-model="SelectedVideoEndTime" type="number" placeholder="End After X Seconds"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <i class="fa fa-file-audio-o" style="font-size: 24px"></i>
+            </td>
+            <td>
+                <select ng-model="SelectedAudio">
+                    <option ng-repeat="audio in AvailableAudios" value="{{audio}}">{{audio}}</option>
+                </select>
+            </td>
+            <td>
+                <input ng-model="SelectedAudioOffset" type="number" placeholder="Offset In Seconds"/>
+            </td>
+            <td>
+                <input ng-model="SelectedAudioStartTime" type="number" placeholder="Start After X Seconds"/>
+            </td>
+            <td>
+                <input ng-model="SelectedAudioEndTime" type="number" placeholder="End After X Seconds"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <i class="fa fa-plus-square-o" ng-show="!twoVideosMode" ng-click="twoVideosMode=true" style="font-size: 24px"></i>
+                <i class="fa fa-file-video-o" ng-hide="!twoVideosMode" style="font-size: 24px"></i>
+            </td>
+            <td>
+                <select ng-model="SelectedVideo2" ng-hide="!twoVideosMode">
+                    <option ng-repeat="video in AvailableVideos" value="{{video}}">{{video}}</option>
+                </select>
+            </td>
+            <td>
+                <input ng-hide="!twoVideosMode" ng-model="SelectedVideoOffset2" type="number" placeholder="Offset In Seconds"/>
+            </td>
+            <td>
+                <input ng-hide="!twoVideosMode" ng-model="SelectedVideoStartTime2" type="number" placeholder="Start After X Seconds"/>
+            </td>
+            <td>
+                <input ng-hide="!twoVideosMode" ng-model="SelectedVideoEndTime2" type="number" placeholder="End After X Seconds"/>
+            </td>
+        </tr>
+    </table>
+</div>
+    <div class="row">
+        <table class="col-sm-12 media-selection">
+            <tr>
+                <td class="vertical-div">
+                    <button type="button" class="btn btn-info" ng-click="generateMovie()" style="margin-bottom: 3px;">Generate &nbsp;<i class="fa fa-caret-square-o-right" style="font-size:24px"></i></button>
+                    <a href="{{currentMovie}}"><button type="button" class="btn btn-info" ng-disabled="!currentMovie" ng-click="downloadMovie()">Download &nbsp;<i class="fa fa-floppy-o" style="font-size:24px"></i></button></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <video id="videoPlayer" height="512" class="center" controls poster="../Resources/ffmpeg.gif">
+                <source id="videoSource" typee="video/mp4">
+            </video>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="WebPlayer.js"></script>
+    <script src="ApiService.js"></script>
+</body>
+</html>
